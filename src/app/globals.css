@@ -1,26 +1,124 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --day-canvas: #f4f3ee;
+  --day-surface: #ffffff;
+  --day-recessed: #eae8e0;
+  --day-ink: #111216;
+  --day-ink-soft: #4e5361;
+  --day-muted: #7a808f;
+  --day-border: #d4d0c5;
+  --day-vermilion: #ff3b1d;
+  --day-cobalt: #0052ff;
+  --day-lime: #c8ff29;
+  --day-emerald: #059669;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    background-color: var(--day-canvas);
+    color: var(--day-ink);
+    color-scheme: light;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--day-canvas);
+    color: var(--day-ink);
+    font-family:
+      var(--font-space-grotesk),
+      -apple-system,
+      "PingFang SC",
+      "Hiragino Sans GB",
+      "Noto Sans SC",
+      "Microsoft YaHei",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  code,
+  pre,
+  kbd,
+  .font-mono {
+    font-family:
+      var(--font-jetbrains-mono),
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+    font-variant-numeric: tabular-nums;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.font-display {
+  font-family:
+    var(--font-syne),
+    var(--font-space-grotesk),
+    -apple-system,
+    "PingFang SC",
+    sans-serif;
+}
+
+.font-editorial {
+  font-family:
+    var(--font-instrument-serif),
+    Georgia,
+    "Times New Roman",
+    serif;
+}
+
+.daylight-grid-bg {
+  background-color: #f4f3ee;
+  background-image:
+    radial-gradient(rgba(17, 18, 22, 0.085) 1px, transparent 1px),
+    linear-gradient(to right, rgba(17, 18, 22, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17, 18, 22, 0.035) 1px, transparent 1px);
+  background-size:
+    24px 24px,
+    120px 120px,
+    120px 120px;
+}
+
+.blueprint-dots {
+  background-image: radial-gradient(rgba(0, 82, 255, 0.14) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+@keyframes kinetic-marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-kinetic-marquee {
+  display: flex;
+  width: max-content;
+  animation: kinetic-marquee 32s linear infinite;
+}
+
+.animate-kinetic-marquee:hover {
+  animation-play-state: paused;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eae8e0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bab5a8;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #111216;
 }

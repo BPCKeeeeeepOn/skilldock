@@ -1,0 +1,88 @@
+import type { PlatformMeta } from "@/types/skill";
+
+export const PLATFORMS: PlatformMeta[] = [
+  {
+    id: "claude-code",
+    name: "Claude Code",
+    vendor: "Anthropic",
+    skillPathTemplate: ".claude/skills/<slug>/",
+    mcpConfigPath: ".mcp.json",
+    rulePath: "CLAUDE.md",
+    supportLevel: "原生支持",
+    notes: "自动发现项目级与全局 ~/.claude/skills/ 中的 SKILL.md 技能包。",
+  },
+  {
+    id: "cursor",
+    name: "Cursor",
+    vendor: "Anysphere",
+    skillPathTemplate: ".cursor/skills/<slug>/",
+    mcpConfigPath: ".cursor/mcp.json",
+    rulePath: ".cursor/rules/*.mdc",
+    supportLevel: "原生支持",
+    notes: "同时支持 Agent Skills 文件夹、.mdc 项目规则以及 MCP 工具接入。",
+  },
+  {
+    id: "codex",
+    name: "OpenAI Codex",
+    vendor: "OpenAI",
+    skillPathTemplate: ".codex/skills/<slug>/",
+    mcpConfigPath: "~/.codex/config.toml",
+    rulePath: "AGENTS.md",
+    supportLevel: "原生支持",
+    notes: "支持标准 SKILL.md 目录与仓库根部 AGENTS.md 约定。",
+  },
+  {
+    id: "gemini-cli",
+    name: "Gemini CLI",
+    vendor: "Google",
+    skillPathTemplate: ".gemini/skills/<slug>/",
+    mcpConfigPath: ".gemini/settings.json",
+    rulePath: "GEMINI.md",
+    supportLevel: "原生支持",
+    notes: "支持 SKILL.md 渐进式上下文加载及标准 MCP 服务器扩展。",
+  },
+  {
+    id: "antigravity",
+    name: "Antigravity IDE / CLI",
+    vendor: "Google DeepMind",
+    skillPathTemplate: ".gemini/antigravity/skills/<slug>/",
+    mcpConfigPath: "mcp_config.json",
+    rulePath: "AGENTS.md",
+    supportLevel: "原生支持",
+    notes: "兼容标准 SKILL.md 规范，按需加载脚本与参考资料。",
+  },
+  {
+    id: "copilot",
+    name: "GitHub Copilot",
+    vendor: "GitHub",
+    skillPathTemplate: ".github/skills/<slug>/",
+    mcpConfigPath: ".vscode/mcp.json",
+    rulePath: ".github/copilot-instructions.md",
+    supportLevel: "原生支持",
+    notes: "VS Code 与 Copilot Coding Agent 原生读取 .github/skills/ 目录。",
+  },
+  {
+    id: "windsurf",
+    name: "Windsurf",
+    vendor: "Codeium",
+    skillPathTemplate: ".windsurf/skills/<slug>/",
+    mcpConfigPath: "~/.codeium/windsurf/mcp_config.json",
+    rulePath: ".windsurfrules",
+    supportLevel: "标准兼容",
+    notes: "支持技能目录与工作区 Cascade 规则加载。",
+  },
+  {
+    id: "opencode",
+    name: "OpenCode",
+    vendor: "OpenCode Community",
+    skillPathTemplate: ".opencode/skills/<slug>/",
+    mcpConfigPath: "opencode.json",
+    rulePath: "AGENTS.md",
+    supportLevel: "标准兼容",
+    notes: "开源终端 Coding Agent，兼容通用 .agents/skills/ 路径。",
+  },
+];
+
+export const PLATFORM_MAP = Object.fromEntries(
+  PLATFORMS.map((p) => [p.id, p])
+) as Record<PlatformMeta["id"], PlatformMeta>;
