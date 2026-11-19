@@ -86,7 +86,7 @@ export default async function SkillDetailPage({
       </nav>
 
       <div className="grid gap-10 lg:grid-cols-12">
-        <div className="space-y-8 lg:col-span-8">
+        <div className="min-w-0 space-y-8 lg:col-span-8">
           <div className="space-y-3 border-b border-[#d4d0c5] pb-6">
             <div className="flex flex-wrap items-center gap-2 font-mono text-[11px]">
               <span className="rounded-[2px] border border-[#111216] bg-[#ff3b1d] px-2 py-0.5 font-bold text-white uppercase">
@@ -109,15 +109,15 @@ export default async function SkillDetailPage({
               </span>
             </div>
 
-            <h1 className="font-display text-2xl font-extrabold tracking-tight text-[#111216] sm:text-4xl">
+            <h1 className="font-display text-2xl font-extrabold tracking-tight text-[#111216] break-words sm:text-4xl">
               {skill.title}
             </h1>
 
-            <p className="font-mono text-xs font-medium text-[#7a808f]">
+            <p className="font-mono text-xs font-medium text-[#7a808f] break-all">
               {skill.englishName}
             </p>
 
-            <p className="text-sm leading-relaxed text-[#4e5361] sm:text-base">
+            <p className="text-sm leading-relaxed text-[#4e5361] break-words sm:text-base">
               {skill.summary}
             </p>
 
@@ -128,10 +128,10 @@ export default async function SkillDetailPage({
                 href={skill.repoUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-[2px] border border-[#111216]/30 bg-white px-3 py-1.5 font-mono text-xs font-semibold text-[#111216] transition-all hover:border-[#111216] hover:shadow-[2px_2px_0_#111216]"
+                className="inline-flex max-w-full items-center gap-1.5 rounded-[2px] border border-[#111216]/30 bg-white px-3 py-1.5 font-mono text-xs font-semibold text-[#111216] transition-all hover:border-[#111216] hover:shadow-[2px_2px_0_#111216]"
               >
-                <span>{skill.repo}</span>
-                <ArrowUpRight className="h-3.5 w-3.5 text-[#0052ff]" />
+                <span className="truncate">{skill.repo}</span>
+                <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-[#0052ff]" />
               </a>
 
               {skill.skillBlobUrl && (
@@ -142,7 +142,7 @@ export default async function SkillDetailPage({
                   className="inline-flex items-center gap-1.5 rounded-[2px] border border-[#111216] bg-[#c8ff29] px-3 py-1.5 font-mono text-xs font-bold text-[#111216] shadow-[2px_2px_0_#111216] transition-transform hover:-translate-y-0.5"
                 >
                   <span>查看 GitHub SKILL.md</span>
-                  <ArrowUpRight className="h-3.5 w-3.5" />
+                  <ArrowUpRight className="h-3.5 w-3.5 shrink-0" />
                 </a>
               )}
             </div>
@@ -151,19 +151,19 @@ export default async function SkillDetailPage({
           <div className="overflow-hidden rounded-[3px] border border-[#111216] shadow-[5px_5px_0_#111216]">
             <SkillDetailGallery skill={skill} />
             <div className="grid grid-cols-2 divide-x divide-y divide-[#d4d0c5] border-t border-[#111216]/20 bg-white text-xs sm:grid-cols-4 sm:divide-y-0">
-              <div className="p-3.5">
+              <div className="min-w-0 p-3.5">
                 <div className="font-mono text-[10px] font-bold text-[#7a808f] uppercase">
                   TECH STACK
                 </div>
-                <div className="mt-1 font-mono font-bold text-[#111216]">
+                <div className="mt-1 font-mono font-bold text-[#111216] break-words">
                   {skill.techTags.join(" · ")}
                 </div>
               </div>
-              <div className="p-3.5">
+              <div className="min-w-0 p-3.5">
                 <div className="font-mono text-[10px] font-bold text-[#7a808f] uppercase">
                   DELIVERABLE
                 </div>
-                <div className="mt-1 font-mono font-bold text-[#111216]">
+                <div className="mt-1 font-mono font-bold text-[#111216] break-words">
                   {skill.deliverable}
                 </div>
               </div>
@@ -225,13 +225,13 @@ export default async function SkillDetailPage({
               {skill.verificationChecks.map((check) => (
                 <div
                   key={check.label}
-                  className="flex items-center justify-between gap-4 px-4 py-3 text-xs"
+                  className="flex flex-col gap-1.5 px-4 py-3 text-xs sm:flex-row sm:items-center sm:justify-between sm:gap-4"
                 >
                   <span className="flex items-center gap-2 font-bold text-[#111216]">
-                    <Check className="h-3.5 w-3.5 text-[#059669]" />
-                    {check.label}
+                    <Check className="h-3.5 w-3.5 shrink-0 text-[#059669]" />
+                    <span>{check.label}</span>
                   </span>
-                  <span className="font-mono text-[11px] text-[#4e5361]">
+                  <span className="break-all font-mono text-[11px] text-[#4e5361] sm:text-right">
                     {check.note}
                   </span>
                 </div>
@@ -240,8 +240,8 @@ export default async function SkillDetailPage({
           </section>
         </div>
 
-        <aside className="lg:col-span-4">
-          <div className="sticky top-20 space-y-5">
+        <aside className="min-w-0 lg:col-span-4">
+          <div className="space-y-5 lg:sticky lg:top-20">
             <AgentInstallerPanel skill={skill} />
 
             <div className="rounded-[3px] border border-[#111216] bg-white p-4">

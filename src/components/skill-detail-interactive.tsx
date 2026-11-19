@@ -53,8 +53,8 @@ export function SkillDetailGallery({ skill }: { skill: SkillItem }) {
 
   return (
     <div className="bg-[#f4f3ee]">
-      {/* Main Full-Resolution Showcase Stage (no forced aspect crop) */}
-      <div className="relative flex h-[320px] items-center justify-center overflow-hidden bg-[#14161b] sm:h-[460px]">
+      {/* Main Full-Resolution Showcase Stage */}
+      <div className="relative flex aspect-[16/10] w-full max-h-[460px] items-center justify-center overflow-hidden bg-[#14161b] sm:h-[380px] sm:aspect-auto lg:h-[460px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={current.src}
@@ -62,9 +62,9 @@ export function SkillDetailGallery({ skill }: { skill: SkillItem }) {
           className="max-h-full max-w-full object-contain"
         />
 
-        <div className="pointer-events-none absolute inset-x-3 top-3 flex items-center justify-between gap-2">
+        <div className="pointer-events-none absolute inset-x-3 top-3 flex flex-wrap items-center justify-between gap-2">
           <span className="inline-flex items-center gap-1.5 rounded-[2px] border border-white/20 bg-[#111216]/85 px-2.5 py-1 font-mono text-[10px] font-bold text-white backdrop-blur-xs">
-            <Images className="h-3 w-3 text-[#c8ff29]" />
+            <Images className="h-3 w-3 shrink-0 text-[#c8ff29]" />
             <span>
               GITHUB 实拍预览 {String(activeIdx + 1).padStart(2, "0")} /{" "}
               {String(images.length).padStart(2, "0")}
@@ -78,15 +78,15 @@ export function SkillDetailGallery({ skill }: { skill: SkillItem }) {
             className="pointer-events-auto inline-flex items-center gap-1 rounded-[2px] border border-[#111216] bg-[#c8ff29] px-2.5 py-1 font-mono text-[10px] font-bold text-[#111216] shadow-[2px_2px_0_#111216] transition-transform hover:-translate-y-0.5"
           >
             <span>查看 GitHub 原图</span>
-            <ArrowUpRight className="h-3 w-3" />
+            <ArrowUpRight className="h-3 w-3 shrink-0" />
           </a>
         </div>
       </div>
 
       {/* Caption Row */}
       <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#111216]/15 bg-white px-4 py-2.5">
-        <p className="text-xs font-medium text-[#111216]">{current.caption}</p>
-        <span className="font-mono text-[10px] text-[#7a808f]">
+        <p className="min-w-0 text-xs font-medium text-[#111216]">{current.caption}</p>
+        <span className="max-w-full truncate font-mono text-[10px] text-[#7a808f]">
           来源：{skill.repo}
         </span>
       </div>
@@ -150,9 +150,9 @@ export function PackageFileExplorer({ files }: { files: SkillFileNode[] }) {
   const current = files[selectedIndex] ?? files[0];
 
   return (
-    <div className="overflow-hidden rounded-[3px] border border-[#111216] bg-white shadow-[4px_4px_0_#111216]">
+    <div className="min-w-0 max-w-full overflow-hidden rounded-[3px] border border-[#111216] bg-white shadow-[4px_4px_0_#111216]">
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#111216] bg-[#eae8e0] px-3 py-2">
-        <div className="flex flex-wrap items-center gap-1.5">
+        <div className="flex min-w-0 flex-wrap items-center gap-1.5">
           {files.map((file, idx) => {
             const active = idx === selectedIndex;
             return (
@@ -160,21 +160,21 @@ export function PackageFileExplorer({ files }: { files: SkillFileNode[] }) {
                 key={file.path}
                 type="button"
                 onClick={() => setSelectedIndex(idx)}
-                className={`inline-flex cursor-pointer items-center gap-1.5 rounded-[2px] border px-2.5 py-1 font-mono text-[11px] font-semibold transition-colors ${
+                className={`inline-flex max-w-full cursor-pointer items-center gap-1.5 rounded-[2px] border px-2.5 py-1 font-mono text-[11px] font-semibold transition-colors ${
                   active
                     ? "border-[#111216] bg-[#c8ff29] text-[#111216]"
                     : "border-transparent text-[#4e5361] hover:border-[#111216]/30 hover:bg-white hover:text-[#111216]"
                 }`}
               >
-                <FolderOpen className="h-3 w-3 text-[#0052ff]" />
-                <span>{file.path}</span>
+                <FolderOpen className="h-3 w-3 shrink-0 text-[#0052ff]" />
+                <span className="truncate">{file.path}</span>
               </button>
             );
           })}
         </div>
 
         {current && (
-          <div className="flex items-center gap-2.5">
+          <div className="flex shrink-0 items-center gap-2.5">
             <span className="font-mono text-[10px] font-medium text-[#4e5361]">
               {current.size}
             </span>
@@ -184,7 +184,7 @@ export function PackageFileExplorer({ files }: { files: SkillFileNode[] }) {
       </div>
 
       {current && (
-        <pre className="max-h-80 overflow-x-auto bg-[#faf9f5] p-4 font-mono text-[12px] leading-relaxed text-[#111216]">
+        <pre className="max-h-80 max-w-full overflow-x-auto bg-[#faf9f5] p-3 font-mono text-[11px] leading-relaxed text-[#111216] sm:p-4 sm:text-[12px]">
           <code>{current.preview}</code>
         </pre>
       )}
@@ -348,7 +348,7 @@ export function AgentInstallerPanel({ skill }: { skill: SkillItem }) {
   const promptWakeupText = `请加载本地已安装的 "${skill.slug}" Skill（参考 SKILL.md 工作流），帮我开始执行这个任务：`;
 
   return (
-    <div className="rounded-[3px] border border-[#111216] bg-white p-5 shadow-[5px_5px_0_#111216]">
+    <div className="min-w-0 rounded-[3px] border border-[#111216] bg-white p-4 shadow-[5px_5px_0_#111216] sm:p-5">
       {/* Console Header */}
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#d4d0c5] pb-3">
         <span className="inline-flex items-center gap-2 font-mono text-[11px] font-bold tracking-wider text-[#111216] uppercase">
@@ -433,7 +433,7 @@ export function AgentInstallerPanel({ skill }: { skill: SkillItem }) {
 
       {/* Local Agent Targets Checklist */}
       <div className="mt-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-2">
           <label className="font-mono text-[10px] font-bold tracking-wider text-[#7a808f] uppercase">
             选择目标本地 CLI ({selectedTargets.length} 已选)
           </label>

@@ -37,7 +37,7 @@ export default function HomePage() {
       <section className="mx-auto max-w-[1480px] px-4 pt-8 pb-12 sm:px-6 lg:px-10 lg:pt-12">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
           {/* Left Hero Manifesto */}
-          <div className="space-y-6 lg:col-span-6">
+          <div className="min-w-0 space-y-6 lg:col-span-6">
             <div className="inline-flex flex-wrap items-center gap-2 rounded-[2px] border border-[#111216] bg-white px-3 py-1 font-mono text-[10px] font-bold tracking-wider text-[#111216] shadow-[2px_2px_0_#111216]">
               <span className="h-2 w-2 rounded-full bg-[#ff3b1d]" />
               <span>DAYLIGHT CREATIVE STUDIO</span>
@@ -46,16 +46,16 @@ export default function HomePage() {
             </div>
 
             <div className="space-y-2">
-              <h1 className="font-display text-4xl font-extrabold tracking-tight text-[#111216] sm:text-5xl xl:text-[56px] xl:leading-[1.06]">
+              <h1 className="font-display text-3xl font-extrabold tracking-tight text-[#111216] sm:text-5xl xl:text-[56px] xl:leading-[1.06]">
                 让编码智能体
                 <span className="block">
                   直接生成
-                  <span className="relative mx-2 inline-block border-b-4 border-[#ff3b1d] px-1 text-[#0052ff]">
+                  <span className="relative mx-1.5 inline-block border-b-4 border-[#ff3b1d] px-1 text-[#0052ff] sm:mx-2">
                     3D · 视频 · 游戏
                   </span>
                 </span>
               </h1>
-              <p className="font-editorial text-2xl text-[#4e5361] italic sm:text-3xl">
+              <p className="font-editorial text-xl text-[#4e5361] italic sm:text-3xl">
                 Visual Worlds, Motion Films &amp; Playable Mechanics.
               </p>
             </div>
@@ -114,7 +114,7 @@ export default function HomePage() {
           </div>
 
           {/* Right Live Interactive 60FPS Canvas Stage */}
-          <div className="lg:col-span-6">
+          <div className="min-w-0 lg:col-span-6">
             <HeroKineticCanvas />
           </div>
         </div>
@@ -160,7 +160,7 @@ export default function HomePage() {
           {/* Card 1: Blueprint Cobalt Large Tile */}
           <Link
             href="/skills?kind=visual-skill"
-            className="group relative flex flex-col justify-between overflow-hidden rounded-[3px] border border-[#111216] bg-[#0052ff] p-6 text-white shadow-[5px_5px_0_#111216] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 md:col-span-5"
+            className="group relative flex min-w-0 flex-col justify-between overflow-hidden rounded-[3px] border border-[#111216] bg-[#0052ff] p-6 text-white shadow-[5px_5px_0_#111216] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 md:col-span-5"
           >
             <div className="flex items-start justify-between">
               <span className="rounded-[2px] border border-white/40 bg-white/15 px-2 py-0.5 font-mono text-[10px] font-bold">
@@ -192,7 +192,7 @@ export default function HomePage() {
           {/* Card 2: Signal Vermilion Video Block */}
           <Link
             href="/skills?output=video"
-            className="group flex flex-col justify-between rounded-[3px] border border-[#111216] bg-[#ff3b1d] p-6 text-white shadow-[5px_5px_0_#111216] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 md:col-span-4"
+            className="group flex min-w-0 flex-col justify-between rounded-[3px] border border-[#111216] bg-[#ff3b1d] p-6 text-white shadow-[5px_5px_0_#111216] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 md:col-span-4"
           >
             <div className="flex items-start justify-between">
               <span className="rounded-[2px] border border-white/40 bg-black/15 px-2 py-0.5 font-mono text-[10px] font-bold">
@@ -214,7 +214,7 @@ export default function HomePage() {
           </Link>
 
           {/* Right Column Stacked 2 Tiles */}
-          <div className="flex flex-col gap-4 md:col-span-3">
+          <div className="flex min-w-0 flex-col gap-4 md:col-span-3">
             <Link
               href="/skills?output=games"
               className="group flex flex-1 flex-col justify-between rounded-[3px] border border-[#111216] bg-white p-5 shadow-[4px_4px_0_#111216] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-[#c8ff29]"

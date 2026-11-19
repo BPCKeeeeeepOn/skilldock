@@ -48,10 +48,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="zh-CN"
       className={`${spaceGrotesk.variable} ${syne.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} h-full`}
     >
-      <body className="daylight-grid-bg min-h-full flex flex-col bg-[#f4f3ee] text-[#111216]">
+      <body className="daylight-grid-bg min-h-full flex flex-col overflow-x-clip bg-[#f4f3ee] text-[#111216]">
         <LocalAgentsProvider>
           <SiteHeader />
-          <main className="flex-1">{children}</main>
+          <main className="min-w-0 flex-1">{children}</main>
           <SiteFooter />
           <LocalAgentsDrawer />
         </LocalAgentsProvider>

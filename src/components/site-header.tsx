@@ -183,6 +183,23 @@ export function SiteHeader() {
                   : `${detectedCount} 已发现`}
               </span>
             </button>
+            <Link
+              href="/skills?favorites=1"
+              onClick={() => setMobileOpen(false)}
+              className="mb-1 flex items-center justify-between rounded-[2px] border border-[#111216]/20 bg-[#faf9f5] px-2.5 py-2 font-mono text-xs font-semibold text-[#111216]"
+            >
+              <span className="inline-flex items-center gap-2">
+                <Heart
+                  className={`h-3.5 w-3.5 ${
+                    favorites.length > 0
+                      ? "fill-[#ff3b1d] text-[#ff3b1d]"
+                      : "text-[#7a808f]"
+                  }`}
+                />
+                <span>我的收藏</span>
+              </span>
+              <span>{String(favorites.length).padStart(2, "0")}</span>
+            </Link>
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}

@@ -57,7 +57,7 @@ export function HomeInstallerPreview() {
 
       <div className="grid lg:grid-cols-12">
         {/* Platform Switcher */}
-        <div className="grid grid-cols-2 gap-1.5 border-b border-[#d4d0c5] bg-[#f4f3ee] p-4 sm:grid-cols-4 lg:col-span-5 lg:grid-cols-2 lg:border-r lg:border-b-0">
+        <div className="grid min-w-0 grid-cols-2 gap-1.5 border-b border-[#d4d0c5] bg-[#f4f3ee] p-4 sm:grid-cols-4 lg:col-span-5 lg:grid-cols-2 lg:border-r lg:border-b-0">
           {PLATFORMS.map((p) => {
             const active = p.id === selectedId;
             const agentLive = snapshot?.agents.find((a) => a.id === p.id);
@@ -87,23 +87,23 @@ export function HomeInstallerPreview() {
         </div>
 
         {/* Live Output Command & Path Spec */}
-        <div className="flex flex-col justify-between space-y-4 p-5 lg:col-span-7">
-          <div>
-            <div className="flex items-center justify-between font-mono text-[10px] font-bold text-[#7a808f]">
-              <span>
+        <div className="flex min-w-0 flex-col justify-between space-y-4 p-4 sm:p-5 lg:col-span-7">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] font-bold text-[#7a808f]">
+              <span className="min-w-0 truncate">
                 {live?.binaryVersion
                   ? `DETECTED: ${live.binaryVersion}`
                   : `INSTALL COMMAND (${current.vendor.toUpperCase()})`}
               </span>
               <CopyButton text={sampleCmd} label="复制安装命令" />
             </div>
-            <div className="mt-2 overflow-x-auto rounded-[2px] border border-[#111216] bg-[#faf9f5] px-3.5 py-2.5 font-mono text-xs font-medium text-[#0052ff]">
+            <div className="mt-2 max-w-full overflow-x-auto rounded-[2px] border border-[#111216] bg-[#faf9f5] px-3.5 py-2.5 font-mono text-xs font-medium text-[#0052ff]">
               $ {sampleCmd}
             </div>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-[2px] border border-[#d4d0c5] bg-[#f4f3ee] p-3">
+            <div className="min-w-0 rounded-[2px] border border-[#d4d0c5] bg-[#f4f3ee] p-3">
               <div className="font-mono text-[10px] font-bold text-[#7a808f]">
                 LIVE TARGET DIR ({live?.installedSkills.length ?? 0} INSTALLED)
               </div>
@@ -111,11 +111,11 @@ export function HomeInstallerPreview() {
                 {samplePath}
               </div>
             </div>
-            <div className="rounded-[2px] border border-[#d4d0c5] bg-[#f4f3ee] p-3">
+            <div className="min-w-0 rounded-[2px] border border-[#d4d0c5] bg-[#f4f3ee] p-3">
               <div className="font-mono text-[10px] font-bold text-[#7a808f]">
                 RULE &amp; MCP CONFIG
               </div>
-              <div className="mt-1 font-mono text-xs font-bold text-[#111216]">
+              <div className="mt-1 break-words font-mono text-xs font-bold text-[#111216]">
                 {current.rulePath} · {current.mcpConfigPath}
               </div>
             </div>

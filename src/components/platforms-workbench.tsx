@@ -179,7 +179,7 @@ export function PlatformsWorkbench() {
           return (
             <div
               key={platform.id}
-              className={`flex flex-col rounded-[3px] border bg-white p-5 transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 ${
+              className={`flex min-w-0 flex-col rounded-[3px] border bg-white p-4 transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 sm:p-5 ${
                 live?.connected
                   ? "border-[#111216] shadow-[5px_5px_0_#111216]"
                   : "border-[#111216]/35 shadow-[4px_4px_0_#eae8e0] hover:border-[#111216] hover:shadow-[4px_4px_0_#111216]"

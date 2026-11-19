@@ -170,10 +170,10 @@ export function GitHubDiscoverClient() {
         </div>
 
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-[#eae8e0] pt-3.5 font-mono text-[11px]">
-          <div className="flex items-center gap-2 text-[#4e5361]">
-            <Terminal className="h-3.5 w-3.5 text-[#0052ff]" />
+          <div className="flex min-w-0 flex-wrap items-center gap-2 text-[#4e5361]">
+            <Terminal className="h-3.5 w-3.5 shrink-0 text-[#0052ff]" />
             <span>CLI 批量抓取落盘脚本:</span>
-            <code className="rounded-[2px] border border-[#d4d0c5] bg-[#f4f3ee] px-2 py-0.5 font-semibold text-[#111216]">
+            <code className="max-w-full overflow-x-auto break-all rounded-[2px] border border-[#d4d0c5] bg-[#f4f3ee] px-2 py-0.5 font-semibold text-[#111216]">
               {CLI_SCRIPT_CMD}
             </code>
           </div>
@@ -181,7 +181,7 @@ export function GitHubDiscoverClient() {
         </div>
       </div>
 
-      <div className="flex items-center justify-between font-mono text-[11px] font-semibold text-[#4e5361]">
+      <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] font-semibold text-[#4e5361]">
         <span>
           {loading
             ? "SCANNING REPOSITORIES..."
@@ -201,7 +201,7 @@ export function GitHubDiscoverClient() {
         {items.map((repo) => (
           <div
             key={repo.id}
-            className="flex flex-col justify-between rounded-[3px] border border-[#111216]/25 bg-white p-4 transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:border-[#111216] hover:shadow-[4px_4px_0_#111216]"
+            className="flex min-w-0 flex-col justify-between rounded-[3px] border border-[#111216]/25 bg-white p-4 transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:border-[#111216] hover:shadow-[4px_4px_0_#111216]"
           >
             <div>
               <div className="flex items-start justify-between gap-2">
@@ -209,7 +209,7 @@ export function GitHubDiscoverClient() {
                   href={repo.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 font-mono text-sm font-bold text-[#111216] hover:text-[#0052ff]"
+                  className="inline-flex min-w-0 items-center gap-1.5 break-all font-mono text-sm font-bold text-[#111216] hover:text-[#0052ff]"
                 >
                   <span>{repo.fullName}</span>
                   <ArrowUpRight className="h-3.5 w-3.5" />

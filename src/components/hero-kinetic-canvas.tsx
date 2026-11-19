@@ -468,17 +468,17 @@ export function HeroKineticCanvas() {
   }
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-[3px] border border-[#111216] bg-white shadow-[6px_6px_0_#111216]">
+    <div className="flex w-full min-w-0 flex-col overflow-hidden rounded-[3px] border border-[#111216] bg-white shadow-[6px_6px_0_#111216]">
       {/* Viewport Top Telemetry Bar */}
-      <div className="flex items-center justify-between border-b border-[#111216] bg-[#eae8e0] px-3.5 py-2 font-mono text-[10px]">
-        <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-[#ff3b1d]" />
-          <span className="font-bold tracking-wider text-[#111216]">
+      <div className="flex items-center justify-between gap-2 border-b border-[#111216] bg-[#eae8e0] px-3.5 py-2 font-mono text-[10px]">
+        <div className="flex min-w-0 items-center gap-2">
+          <span className="h-2 w-2 shrink-0 rounded-full bg-[#ff3b1d]" />
+          <span className="truncate font-bold tracking-wider text-[#111216]">
             LIVE VIEWPORT // {activeConfig.tech}
           </span>
         </div>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex shrink-0 items-center gap-2">
           <span className="hidden text-[#4e5361] sm:inline">{cursorHud}</span>
           <span className="rounded-[2px] border border-[#111216] bg-[#c8ff29] px-1.5 py-0.5 font-bold text-[#111216]">
             60 FPS
@@ -519,7 +519,7 @@ export function HeroKineticCanvas() {
               key={m.id}
               type="button"
               onClick={() => setMode(m.id)}
-              className={`flex cursor-pointer flex-col border-r border-b border-[#111216]/15 px-3 py-2.5 text-left transition-colors last:border-r-0 sm:border-b-0 ${
+              className={`flex cursor-pointer flex-col border-[#111216]/15 px-3 py-2.5 text-left transition-colors odd:border-r border-b nth-[n+3]:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0 ${
                 active
                   ? "bg-[#111216] text-white"
                   : "bg-white text-[#111216] hover:bg-[#f4f3ee]"

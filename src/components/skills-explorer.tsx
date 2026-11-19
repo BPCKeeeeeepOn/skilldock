@@ -785,8 +785,8 @@ export function SkillsExplorer() {
               )}
             </div>
 
-            <div className="flex items-center gap-2.5">
-              <div className="relative flex h-10 items-center rounded-[2px] border border-[#111216]/30 bg-white focus-within:border-[#111216]">
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="relative flex h-10 min-w-0 flex-1 items-center rounded-[2px] border border-[#111216]/30 bg-white focus-within:border-[#111216] sm:flex-initial">
                 <ArrowUpDown className="pointer-events-none absolute left-2.5 h-3.5 w-3.5 text-[#4e5361]" />
                 <select
                   value={sort}
@@ -975,7 +975,7 @@ export function SkillsExplorer() {
                     )}
                   </span>
 
-                  <div className="flex items-center gap-1 border-l border-[#d4d0c5] pl-3">
+                  <div className="flex items-center gap-1 sm:border-l sm:border-[#d4d0c5] sm:pl-3">
                     <span className="text-[10px] text-[#7a808f]">每页</span>
                     {PAGE_SIZE_OPTIONS.map((size) => {
                       const isCurrentSize = pageSize === size;
